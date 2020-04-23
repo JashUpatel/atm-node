@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ATM System.</title>
+    <link rel="stylesheet" href="indexstyle.css">
+    <link rel="stylesheet" href="all.css">
+
+    <script type="text/javascript">
+
+function redirect(button){
+  var x = button.id;
+  if(x==1)
+  {
+    var ans =  confirm("Press Ok to Cancel");
+    if (ans == true) {
+      document.write();
+      //window.location.href="transc.html";
+      window.location.assign("index")
+
+    } else {
+      //document.write();
+  //window.location.assign("bal.html")
+  return false
+    }
+  }
+
+  if (x=='ch') {
+    var ans =  confirm("Press Ok to Register Your Details");
+    if (ans == true) {
+      //document.write();
+      //var xx ="xx";
+      var pin = document.getElementById('p').value;
+      //var pinx=pin.value;
+      //alert(pinx)
+      //alert(xx);
+      //console.log(pin);
+      var cpin = document.getElementById('cp').value;
+      //alert(cpin);
+      if(pin==cpin && pin!="" && cpin!=""){
+      document.getElementById('formid').submit();
+      }
+      else{
+        alert("Your Pin Doesn't match !");
+      }
+      //console.log("kk")
+      var msg = "{{msg}}";
+
+      console.log(msg);
+      if(msg=="success")
+      {
+        alert("Your Details Are Registered !");
+      }
+      
+      //
+      //window.location.href="transc.html";
+      //window.location.assign("index")
+
+    } else {
+      //document.write();
+  //window.location.assign("bal.html")
+  return false
+    }
+  }
+}
+
+
+
+
+
+    </script>
+
+
+  </head>
+  <body>
+
+
+{{>header}}
+      <section id="mainpin" style="height:950px !important;">
+      <div id="log" style="height:950px !important;">
+<form class="" id='formid' action="/register" method="post">
+
+
+        <div id="h">
+          <center>
+          <h1>Register User {{msg}} </h1>
+        </center>
+        </div>
+<center>
+        <table id="tab">
+        <tr>
+          <td id="td">
+            <i class="fas fa-shield-alt"></i> &nbsp;
+          <label for="cardno">Name</label>
+            </td>
+          <td></td>
+
+          <td>
+          <input type="text" name="name" placeholder="      full name" required  onemptied="Please Enter Your Name !" oninvalid="Please Enter Your Name in Correct Format !" pattern="[a-zA-Z]*" title="Name Entered Must Be In Alphabetic Format!">
+          </td>
+          </tr>
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+
+        <tr>
+          <td>
+            <i class="far fa-credit-card" style="color:ac9766"></i> &nbsp;
+          <label for="cardno"> Card Number</label>
+          <td></td>
+          </td>
+          <td>
+          <input type="integer" name="card" placeholder="      123456789012" readonly="readonly" onfocus="javascript: this.removeAttribute('readonly');" required minlength="16" maxlength="16" pattern="[0-9]*" title="Card Number Contain Exactly 16 Digits Numeric Value" onemptied="Please Enter Card Number!"; onerror="error" >
+          </td>
+          </tr>
+
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+
+          
+        <tr>
+          <td>
+            <i class="far fa-credit-card" style="color:ac9766"></i> &nbsp;
+          <label for="cardno"> Account Number</label>
+          <td></td>
+          </td>
+          <td>
+          <input type="integer" name="account" placeholder="      123456789012" readonly="readonly" onfocus="javascript: this.removeAttribute('readonly');" required minlength="15" maxlength="15" pattern="[0-9]*" title="Account Number Contain Exactly 15 Digits Numeric Value" onemptied="Please Enter Account Number!"; onerror="error" >
+          </td>
+          </tr>
+          
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+
+           <tr>
+          <td id="td">
+            <i class="fas fa-shield-alt"></i> &nbsp;
+          <label for="cardno">Balance</label>
+            </td>
+          <td></td>
+
+          <td>
+          <input type="integer" name="balance" placeholder="      eg: 123" required minlength="1" maxlength="5" onemptied="Please Enter the Balance" oninvalid="Balance Must Be in Digits" pattern="[0-9]*" title="Balance Entered Must Be In Numeric Format !">
+          </td>
+          </tr>
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          
+          <tr>
+          <td id="td">
+            <i class="fas fa-shield-alt"></i> &nbsp;
+          <label for="cardno">set pin</label>
+            </td>
+          <td></td>
+
+          <td>
+          <input id="p" type="password" name="pin" placeholder="      XXXX" required minlength="4" maxlength="4" onemptied="Please Enter the Pin!" oninvalid="Pin Must Be 4 Digits Long" pattern="[0-9]*" title="Pin Entered Must BE In Numeric Format!">
+          </td>
+          </tr>
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+
+          <tr id="td">
+          <td>
+            <i class="fas fa-check-double"></i> &nbsp;
+          <label for="pin">confirm Pin</label>
+          </td>
+          <td></td>
+          <td>
+          <input id="cp" type="password" name="cpin" placeholder="       XXXX" required minlength="4" maxlength="4" onemptied="Please Enter the Pin!" oninvalid="Pin Must Be 4 Digits Long" pattern="[0-9]*" title="Pin Entered Must BE In Numeric Format!">
+          </td>
+          </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+          <tr>
+            <td style="" id="cancel">
+             <button type="" onclick="redirect(this)" id="1" name="cancel">Cancel &nbsp;<i class="far fa-times-circle"></i></button>
+            </td>
+            <td></td>
+            <td id="confirm" style="float:right; margin-right:60px;">
+              <button type="submit" onclick="redirect(this)" id="ch" >Register &nbsp;<i class="fas fa-user-lock"></i> </button>
+            </td>
+          </tr>
+        </table>
+</center>
+
+</form>
+      </div>
+
+    </section>
+ 
+ {{>footer}}
+  </body>
+</html>

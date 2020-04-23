@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ATM System.</title>
+    <link rel="stylesheet" href="indexstyle.css">
+    <link rel="stylesheet" href="all.css">
+
+<script type="text/javascript">
+
+  function cancel(){
+    document.write();
+    //window.location.href="transc.html";
+    window.location.assign("transc");
+
+  }
+</script>
+
+  </head>
+  <body>
+
+
+{{>header}}
+      <section id="mainbal">
+      <div id="log" style="opacity:0.9;">
+<form class="" action="" method="post">
+
+
+        <div id="h">
+          <center>
+          <h1>Balance Inquiry</h1>
+        </center>
+        </div>
+<center>
+        <table id="tab">
+
+          <tr>
+          <td>
+            <i class="fas fa-money-check-alt"></i> &nbsp;
+          <label for="cardno">Current Account Balance</label>
+          </td>
+          <td></td>
+          <td style="margin-left:50px;">
+          <span>  <i class="fas fa-rupee-sign"></i> &nbsp;100/-</span>
+          </td>
+          </tr>
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+    <tr style="display:none">
+          <td>
+            <i class="fas fa-key"></i> &nbsp;
+          <label for="pin">Pin</label>
+          </td>
+          <td></td>
+          <td>
+          <input type="password" name="pin" placeholder="       XXXXXX">
+          </td>
+          </tr>
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+          <tr>
+
+            <td style="float:right;">
+              <button onclick="cancel()" style="margin-top:25%; width:135%;" type="submit" name="submit"> Cancel Transaction &nbsp;<i class="far fa-times-circle"></i></button>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+</center>
+
+</form>
+      </div>
+
+    </section>
+ 
+ {{>footer}}
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ATM System.</title>
+    <link rel="stylesheet" href="indexstyle.css">
+    <link rel="stylesheet" href="all.css">
+    <script type="text/javascript">
+   //var width=window.innerWidth;,,,,screen.Width;
+   var wid = window.screen.availWidth;
+      if(wid<375){
+  //  document.getElementById("img").classList.remove('fa-5x');
+     //document.getElementById("img").classList.toggle('fa-3x');
+     //document.querySelector(".fa-5x").classList.addClass("fa-3x");
+     //document.querySelector(".fa-5x").classList.removeClass("fa-5x");
+
+//     var x = document.getElementById("img");
+
+  //   if (x.classList) {
+    //   x.classList.remove("fa-5x");
+    // } else {
+  //     x.className = x.className.replace(/\bfa-5x\b/g, "");
+     //}
+
+     //document.getElementById('logo').style.display="none";
+
+     document.getElementById('img').classList.remove('fa-5x');
+document.getElementById('img').classList.addClass('fa-3x');
+     document.getElementsByTagName('h3').setAttribute('font-size',"1em")
+   }
+   </script>
+  </head>
+  <body>
+  
+
+{{>header}}
+      <section id="main">
+      <div id="log">
+<form class="" action="/login" method="post">
+
+
+        <div id="h">
+          <center>
+          <h1>login</h1>
+        </center>
+        </div>
+<center>
+        <table id="tab">
+
+          <tr>
+          <td>
+            <i class="far fa-credit-card" style="color:ac9766"></i> &nbsp;
+          <label for="cardno"> Card Number</label>
+          <td></td>
+          </td>
+          <td>
+          <input type="integer" name="cardno" placeholder="      123456789012" readonly="readonly" onfocus="javascript: this.removeAttribute('readonly');" required minlength="16" maxlength="16" pattern="[0-9]*" title="Card Number Contain Exactly 16 Digits Numeric Value" onemptied="Please Enter Card Number!"; onerror="error" >
+          </td>
+          </tr>
+
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+
+          <tr>
+          <td>
+            <i class="fas fa-key"></i> &nbsp;
+          <label for="pin">Pin</label>
+          </td>
+          <td></td>
+          <td>
+          <input type="password" name="pin" minlength="4" maxlength="4"  placeholder="       XXXX" required  onfocus=""  pattern="[0-9]*" title="Please Provide Your 4 Digits Numberic Pin For Authentication!" oninput="" >
+        </td>
+
+          </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+          <tr>
+            <td style="float:right; width:42%; margin-right:150px !important;"><button type="buttom" name="register" onclick="window.location.assign('register');">Register &nbsp;<i class="fas fa-sign-in-alt"></i> </button></td>
+            <td></td>
+            <td style="float:right; margin-right:60px;">
+              <button type="submit" name="submit">Login &nbsp;<i class="fas fa-sign-in-alt"></i> </button>
+            </td>
+          </tr>
+        </table>
+</center>
+
+</form>
+      </div>
+    </section>
+
+
+{{>footer}}
+
+  </body>
+</html>
