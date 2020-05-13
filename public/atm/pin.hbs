@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ATM System.</title>
-    <link rel="stylesheet" href="indexstyle.css">
-    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="/indexstyle.css">
+    <link rel="stylesheet" href="/all.css">
 
     <script type="text/javascript">
 
@@ -16,8 +16,8 @@ function redirect(button){
     var ans =  confirm("Press Ok to Cancel");
     if (ans == true) {
       document.write();
-      //window.location.href="transc.html";
-      window.location.assign("transc")
+      window.location.href="/transc/{{user.id}}";
+      //window.location.assign("transc")
 
     } else {
       //document.write();
@@ -29,10 +29,26 @@ function redirect(button){
   if (x=='ch') {
     var ans =  confirm("Press Ok to Change your Pin");
     if (ans == true) {
-      document.write();
-      alert("Your Pin is Changed!");
-      //window.location.href="transc.html";
-      window.location.assign("transc")
+      //document.write();
+      var pin = document.getElementById('pin').value;
+      var cpin = document.getElementById('cpin').value;
+      if(pin!='' && cpin!='')
+      {
+        if(pin == cpin){
+        document.getElementById('pinform').submit();
+        alert("Your Pin is Changed!");
+        window.location.href="/transc/{{user.id}}";
+        }
+        else{
+          alert("Your Pin Does'nt Match !");
+        }
+      }
+      else{
+        alert('Please Enter Pin and Confirm Pin To Continue !');
+      }
+     // alert("Your Pin is Changed!");
+      //
+      //window.location.assign("transc")
 
     } else {
       //document.write();
@@ -56,12 +72,12 @@ function redirect(button){
 {{>header}}
       <section id="mainpin">
       <div id="log">
-<form class="" action="" method="post">
+<form id="pinform" action="/pin/{{user.id}}" method="post">
 
 
         <div id="h">
           <center>
-          <h1>Change Pin</h1>
+          <h1>Change Pin {{user.name}}</h1>
         </center>
         </div>
 <center>
@@ -75,7 +91,7 @@ function redirect(button){
           <td></td>
 
           <td>
-          <input type="password" name="cardno" placeholder="      XXXX" required minlength="4" maxlength="4" onemptied="Please Enter the Pin!" oninvalid="Pin Must Be 4 Digits Long" pattern="[0-9]*" title="Pin Entered Must BE In Numeric Format!">
+          <input type="password" id="pin" name="pin" placeholder="      XXXX" required minlength="4" maxlength="4" onemptied="Please Enter the Pin!" oninvalid="Pin Must Be 4 Digits Long" pattern="[0-9]*" title="Pin Entered Must BE In Numeric Format!">
           </td>
           </tr>
 
@@ -98,7 +114,7 @@ function redirect(button){
           </td>
           <td></td>
           <td>
-          <input type="password" name="pin" placeholder="       XXXX" required minlength="4" maxlength="4" onemptied="Please Enter the Pin!" oninvalid="Pin Must Be 4 Digits Long" pattern="[0-9]*" title="Pin Entered Must BE In Numeric Format!">
+          <input type="password" id="cpin" name="cpin" placeholder="       XXXX" required minlength="4" maxlength="4" onemptied="Please Enter the Pin!" oninvalid="Pin Must Be 4 Digits Long" pattern="[0-9]*" title="Pin Entered Must BE In Numeric Format!">
           </td>
           </tr>
           <tr></tr>
@@ -110,11 +126,11 @@ function redirect(button){
 
           <tr>
             <td style="" id="cancel">
-             <button type="" onclick="redirect(this)" id="1" name="submit">Cancel &nbsp;<i class="far fa-times-circle"></i></button>
+             <button type="button" onclick="redirect(this)" id="1" >Cancel &nbsp;<i class="far fa-times-circle"></i></button>
             </td>
             <td></td>
             <td id="confirm" style="float:right; margin-right:60px;">
-              <button type="submit" onclick="redirect(this)" id="ch"  name="submit">Change &nbsp;<i class="fas fa-user-lock"></i> </button>
+              <button type="button" onclick="redirect(this)" id="ch"  >Change &nbsp;<i class="fas fa-user-lock"></i> </button>
             </td>
           </tr>
         </table>

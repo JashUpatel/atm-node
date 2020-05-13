@@ -9,6 +9,20 @@
 
     <script type="text/javascript">
 
+      var msg = "{{msg}}";
+
+      //console.log(msg);
+      if(msg=="success")
+      {
+        setTimeout(function(){
+        alert("Your Details Are Registered !");
+        window.location.href="/login";
+        }
+        ,100);
+      }
+
+
+
 function redirect(button){
   var x = button.id;
   if(x==1)
@@ -17,7 +31,7 @@ function redirect(button){
     if (ans == true) {
       document.write();
       //window.location.href="transc.html";
-      window.location.assign("index")
+      window.location.assign("login")
 
     } else {
       //document.write();
@@ -47,10 +61,14 @@ function redirect(button){
       //console.log("kk")
       var msg = "{{msg}}";
 
-      console.log(msg);
+      //console.log(msg);
       if(msg=="success")
       {
+        setTimeout(function(){
         alert("Your Details Are Registered !");
+        window.location.href="login.hbs";
+        }
+        ,100);
       }
       
       //
@@ -84,7 +102,7 @@ function redirect(button){
 
         <div id="h">
           <center>
-          <h1>Register User {{msg}} </h1>
+          <h1>Register User  </h1>
         </center>
         </div>
 <center>
@@ -232,10 +250,12 @@ function redirect(button){
             </td>
             <td></td>
             <td id="confirm" style="float:right; margin-right:60px;">
-              <button type="submit" onclick="redirect(this)" id="ch" >Register &nbsp;<i class="fas fa-user-lock"></i> </button>
+              <button type="button" onclick="redirect(this)" id="ch" >Register &nbsp;<i class="fas fa-user-lock"></i> </button>
             </td>
           </tr>
+          
         </table>
+
 </center>
 
 </form>

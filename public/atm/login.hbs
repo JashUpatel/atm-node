@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ATM System.</title>
-    <link rel="stylesheet" href="indexstyle.css">
-    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="/indexstyle.css">
+    <link rel="stylesheet" href="/all.css">
     <script type="text/javascript">
+window.history.forward();
+
    //var width=window.innerWidth;,,,,screen.Width;
    var wid = window.screen.availWidth;
       if(wid<375){
@@ -28,7 +30,21 @@
      document.getElementById('img').classList.remove('fa-5x');
 document.getElementById('img').classList.addClass('fa-3x');
      document.getElementsByTagName('h3').setAttribute('font-size',"1em")
+
+
    }
+
+
+ var msg = "{{msg}}";
+
+      //console.log(msg);
+      if(msg=="success")
+      {
+        alert("Your Details Are Registered Successfully !");
+      }
+      
+     
+
    </script>
   </head>
   <body>
@@ -37,10 +53,12 @@ document.getElementById('img').classList.addClass('fa-3x');
 {{>header}}
       <section id="main">
       <div id="log">
-<form class="" action="/login" method="post">
+       
+<form class="" action="/transclog" method="post">
 
 
         <div id="h">
+           
           <center>
           <h1>login</h1>
         </center>
@@ -93,13 +111,21 @@ document.getElementById('img').classList.addClass('fa-3x');
             <td style="float:right; width:42%; margin-right:150px !important;"><button type="buttom" name="register" onclick="window.location.assign('register');">Register &nbsp;<i class="fas fa-sign-in-alt"></i> </button></td>
             <td></td>
             <td style="float:right; margin-right:60px;">
-              <button type="submit" name="submit">Login &nbsp;<i class="fas fa-sign-in-alt"></i> </button>
+              <button type="submit">Login &nbsp;<i class="fas fa-sign-in-alt"></i> </button>
             </td>
+          </tr>
+
+
+          <tr>
+            <td></td>
+           <td> </td>
           </tr>
         </table>
 </center>
 
 </form>
+
+<center style="font-size:1.45em;margin-top:2%;">{{error}}</center>
       </div>
     </section>
 

@@ -4,53 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ATM System.</title>
-    <link rel="stylesheet" href="depositstyle.css">
-    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="/depositstyle.css">
+    <link rel="stylesheet" href="/all.css">
 
-    <script type="text/javascript">
-
-    function redirect(button){
-      var x = button.id;
-      if(x==1)
-      {
-        var ans =  confirm("Press Ok to Cancel the Transaction");
-        if (ans == true) {
-          document.write();
-          //window.location.href="transc.html";
-          window.location.assign("transc")
-
-        } else {
-          //document.write();
-      //window.location.assign("bal.html")
-      return false
-        }
-      }
-
-      if (x=='dep') {
-        var ans =  confirm("Press Ok to Deposit the Amount");
-        if (ans == true) {
-          document.write();
-          var bal = confirm("Amount Deposited! Press Ok for Balance Inquiry")
-          //window.location.href="transc.html";
-          if(bal == true){
-            document.write();
-            window.location.assign("bal");
-          }
-          else{
-            
-          window.location.assign("transc");
-        }
-
-        } else {
-          //document.write();
-      //window.location.assign("bal.html")
-      return false
-        }
-      }
-    }
-
-    </script>
-
+  
 
   </head>
   <body>
@@ -59,12 +16,12 @@
 {{>header}}
       <section id="main" >
       <div id="log">
-<form class="" action="" method="post">
+<form id="depositform" action="/deposit/{{user.id}}" method="post">
 
 
         <div id="h">
           <center>
-          <h1>Deposit money</h1>
+          <h1>Deposit money {{user.name}}</h1>
         </center>
         </div>
 <center>
@@ -73,12 +30,12 @@
           <tr>
           <td>
             <i class="fas fa-rupee-sign"></i> &nbsp;
-          <label for="cardno">deposit Amount</label>
+          <label for="cardno">deposit Amount </label>
           </td>
           <td></td>
 
           <td>
-          <input type="integer" name="amount" placeholder="       1000/-" required minlength="3" maxlength="5" onemptied="Please Enter the Amount!" oninvalid="Amount Must Be Value Between 3 to 5 Digits" pattern="[0-9]*" title="Amount Must Be Entered In 3-5 Digits Numeric Format!">
+          <input id="depositamount" type="integer" name="amount"   placeholder="       1000/-"  minlength="3" maxlength="5" onemptied="Please Enter the Amount!" oninvalid="Amount Must Be Value Between 3 to 5 Digits"  required pattern="[0-9]*" title="Amount Must Be Entered In 3-5 Digits Numeric Format!">
           </td>
           </tr>
 
@@ -119,11 +76,11 @@
 
           <tr>
             <td style="" id="cancel">
-            <button type="" onclick="redirect(this)" id="1" name="submit">Cancel Transaction &nbsp;<i class="far fa-times-circle"></i></button>
+            <button type="button" id="cancel" onclick="redirect(this)" >Cancel Transaction &nbsp;<i class="far fa-times-circle"></i></button>
             </td>
               <td></td>
             <td style="float:right; margin-right:60px;">
-              <button type="submit" onclick="redirect(this)" id="dep" name="submit">Deposit &nbsp;<i class="fas fa-user-check"></i> </button>
+              <button type="button" onclick="redirect(this)" id="dep">Deposit &nbsp;<i class="fas fa-user-check"></i> </button>
             </td>
           </tr>
         </table>
@@ -133,6 +90,83 @@
       </div>
 
     </section>
+<script type="text/javascript">
+
+
+          var msg = "{{msg}}";
+
+          if(msg=="success")
+      {
+        setTimeout(function(){
+        //alert("Your Details Are Registered !");
+
+
+          var bal = confirm("Amount Deposited Successfully ! Press Ok for Balance Inquiry")
+          //window.location.href="transc.html";
+          if(bal == true){
+           // document.write();
+          window.location.href="/bal/{{user.id}}";
+          }
+          else{
+        window.location.href="/transc/{{user.id}}";
+        }
+
+
+        //window.location.href="/login";
+        }
+        ,100);
+      }
+
+          
+  
+    function redirect(button){
+      console.log("redirect call")
+      var x = button.id;
+      if(x=='cancel')
+      {
+        var ans =  confirm("Press Ok to Cancel the Transaction");
+        if (ans == true) {
+          document.write();
+          window.location.href="/transc/{{user.id}}";
+          //window.location.assign("loginform")
+
+        } else {
+          //document.write();
+      //window.location.assign("bal.html")
+      return false
+        }
+      }
+
+      if (x=='dep') {
+        var ans =  confirm("Press Ok to Deposit the Amount");
+        if (ans == true) {
+          var depo = document.getElementById("depositamount").value;
+          if(depo!='' && depo!=0){
+            if(depo>0){
+            
+                   document.getElementById("depositform").submit();
+            }else{
+              alert("Please Enter Correct Amount !");
+            }
+            
+
+          }
+          else{
+            alert("Please Enter Deposit Amount !");
+          }
+          //document.write();
+          //alert('hh')
+          
+
+        } else {
+          //document.write();
+      //window.location.assign("bal.html")
+      return false
+        }
+      }
+    }
+
+    </script>
 
 {{>footer}}
   </body>

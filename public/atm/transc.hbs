@@ -4,42 +4,77 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ATM System.</title>
-    <link rel="stylesheet" href="transcstyle.css">
-    <link rel="stylesheet" href="all.css">
-
+    <link rel="stylesheet" href="/transcstyle.css">
+    <link rel="stylesheet" href="/all.css">
     <script type="text/javascript">
 
 
+window.history.forward();
+
+var user = "{{user}}";
+sessionStorage.name = "{{user.name}}";
+sessionStorage.card ="{{user.card}}";
+sessionStorage.account ="{{user.account}}";
+sessionStorage.balance ="{{user.balance}}";
+sessionStorage.pin ="{{user.pin}}";
+sessionStorage.id ="{{user._id}}";
+sessionStorage.jash="jash";
+document.write();
+document.getElementById("try").innerHTML="nhy";
+
+setCookie(cname,"{{user.name}}");
+//console.log(cname);
+
+
+
+//console.log(user);
+//console.log(name);
+
+</script>
+
+
+<script type="text/javascript">
 function redirect(button){
   var x = button.id;
 
   switch (x) {
     case '1':
     document.write();
-    window.location.assign("deposit");
+    window.location.assign("deposit/{{user.id}}");
       break;
     case '2':
     document.write();
-    window.location.assign("with");
+    window.location.assign("with/{{user.id}}");
       break;
       case '3':
       document.write();
-        window.location.assign("pin");
+        
+        window.location.assign("pin/{{user.id}}");
         break;
       case '4':
       document.write();
-      window.location.assign("bal");
+     // alert("{{user.name}}");
+      window.location.assign("bal/{{user.id}}");
         break;
       case '5':
       var ans =  confirm("Press Ok to Logout?");
       if (ans == true) {
         document.write();
+        //history.pushState(null,null,location.href);
+        //window.onpopstate=function(){
+          //history.go(1);
+        //}
         //window.location.href="transc.html";
-        window.location.assign("/index")
+        window.location.assign("/login")
+       //  window.onunload=function noback();
+       
 
+       
       } else {
-        //document.write();
+      document.write();
       //window.location.assign("bal.html")
+      window.location.href="/transc/{{user.id}}";
+      //window.location.assign("transc/{{user.id}}");
       return false
       }
 
@@ -48,28 +83,32 @@ function redirect(button){
   break;
 
     default:
-    return false;
+    return false
 
   }
 
 }
+
+
+
+
     </script>
 
 
 
   </head>
-  <body>
-
-
+  
+  <body onload="noback();">
+ 
 {{>header}}
       <section id="main">
       <div id="log">
-    <form class="" action="" method="post">
+            <form>
 
 
         <div id="h">
           <center>
-          <h1>Welcome</h1>
+          <h1><span id="try"></span>Welcome  {{user.name}}</h1>
         </center>
         </div>
     <center>
@@ -78,12 +117,12 @@ function redirect(button){
           <tr >
           <td class="">
 
-          <button  onclick="redirect(this)" id="1" name="deposit">Deposit &nbsp;<i class="fas fa-rupee-sign"></i></button>
+          <button type="submit"  onclick="redirect(this)" id="1"  name="deposit">Deposit &nbsp;<i class="fas fa-rupee-sign"></i></button>
           </td>
           <td style=""></td>
 
           <td class="">
-          <button onclick="redirect(this)" id="2" name="withdraw">Withdraw &nbsp;<i class="fas fa-money-bill-wave"></i></button>
+          <button type="submit" onclick="redirect(this)" id="2"  name="withdraw">Withdraw &nbsp;<i class="fas fa-money-bill-wave"></i></button>
           </td>
           </tr>
 
@@ -120,7 +159,7 @@ function redirect(button){
             <td></td>
 
             <td style="margin-left:auto; margin-right:auto;" id="cancel">
-            <a href="index.html"><button type="" onclick="redirect(this)" id="5"  name="submit">Logout &nbsp;<i class="far fa-times-circle"></i></button></a>
+            <a href="index.html"><button type="submit" onclick="redirect(this)" id="5"  >Logout &nbsp;<i class="far fa-times-circle"></i></button></a>
             </td>
             <td></td>
 
@@ -136,4 +175,11 @@ function redirect(button){
 
 {{>footer}} 
      </body>
+     <script type="text/javascript">
+  //     window.history.forward();
+function noback(){
+  window.history.forward();
+  }
+
+     </script>
       </html>

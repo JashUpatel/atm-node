@@ -4,10 +4,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ATM System.</title>
-    <link rel="stylesheet" href="depositstyle.css">
-    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="/depositstyle.css">
+    <link rel="stylesheet" href="/all.css">
 
     <script type="text/javascript">
+
+var msg = "{{msg}}";
+
+          if(msg=="success")
+      {
+        setTimeout(function(){
+        //alert("Your Details Are Registered !");
+
+
+          var bal = confirm("Amount Withdrawn Successfully ! Press Ok for Balance Inquiry")
+          //window.location.href="transc.html";
+          if(bal == true){
+           // document.write();
+          window.location.href="/bal/{{user.id}}";
+          }
+          else{
+        window.location.href="/transc/{{user.id}}";
+        }
+
+
+        //window.location.href="/login";
+        }
+        ,100);
+      }
+
+
+
+
+
+
 
     function redirect(button){
       var x = button.id;
@@ -16,12 +46,14 @@
         var ans =  confirm("Press Ok to Cancel the Transaction");
         if (ans == true) {
           document.write();
-          //window.location.href="transc.html";
-          window.location.assign("transc")
+          window.location.href="/transc/{{user.id}}";
+          //window.location.assign("transc")
 
         } else {
-          //document.write();
+        //document.write();
       //window.location.assign("bal.html")
+      // window.location.href="/with/{{user.id}}";
+         
       return false
         }
       }
@@ -29,17 +61,29 @@
       if (x=='with') {
         var ans =  confirm("Press Ok to Withdraw the Amount");
         if (ans == true) {
-          document.write();
-          var bal = confirm("Amount Withdrawn! Press Ok for Balance Inquiry")
-          //window.location.href="transc.html";
-          if(bal == true){
-            document.write();
-            window.location.assign("bal");
+          //document.write();
+
+          var withamount = document.getElementById('withamount').value;
+          if(withamount!='' && withamount!=0){
+            if(withamount>0){
+              var req =Number("{{user.balance}}");
+              if(req>=withamount){
+              //alert("success");
+              document.getElementById('withform').submit();
+              }
+              else{
+                alert("Insufficient Balance ! Check Your Balance...");
+              }
+            //
+            }
+            else{
+              alert("Enter Correct Amount !");
+            }
           }
           else{
+            alert('Please Enter Withdraw Amount !');
+          }
 
-          window.location.assign("transc");
-        }
 
         } else {
           //document.write();
@@ -58,12 +102,12 @@
 
       <section id="main">
       <div id="log">
-<form class="" action="" method="post">
+<form id="withform" action="/with/{{user.id}}" method="post">
 
 
         <div id="h">
           <center>
-          <h1>Withdraw money</h1>
+          <h1>Withdraw money {{user.name}}</h1>
         </center>
         </div>
 <center>
@@ -77,7 +121,7 @@
           <td></td>
 
           <td>
-          <input type="integer" name="cardno" placeholder="       1000/-" minlength="3" maxlength="5" onemptied="Please Enter the Amount!" required oninvalid="Amount Must Be Value Between 3 to 5 Digits" pattern="[0-9]*" title="Amount Must Be Entered In 3-5 Digits Numeric Format!">
+          <input type="integer" id="withamount" name="amount" placeholder="       1000/-" minlength="3" maxlength="5" onemptied="Please Enter the Amount!" required oninvalid="Amount Must Be Value Between 3 to 5 Digits" pattern="[0-9]*" title="Amount Must Be Entered In 3-5 Digits Numeric Format!">
           </td>
           </tr>
 
@@ -118,11 +162,11 @@
 
           <tr>
             <td style="" id="cancel">
-            <button onclick="redirect(this)" id="1" type="" name="submit">Cancel Transaction &nbsp;<i class="far fa-times-circle"></i></button>
+            <button onclick="redirect(this)" id="1" type="" >Cancel Transaction &nbsp;<i class="far fa-times-circle"></i></button>
             </td>
             <td></td>
             <td id="with" style="float:right; margin-right:60px;">
-              <button type="submit" name="submit" onclick="redirect(this)" id="with">Withdraw &nbsp;<i class="fas fa-user-check"></i> </button>
+              <button type="button"  onclick="redirect(this)" id="with">Withdraw &nbsp;<i class="fas fa-user-check"></i> </button>
             </td>
           </tr>
         </table>

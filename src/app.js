@@ -11,14 +11,15 @@ const control = require('./control.js');
 //console.log(path.join(__dirname,'../public'));
 const pathdir=path.join(__dirname,'../public/atm/partials');
 
-app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(express.static("../public/atm"));
 app.set("views","../public/atm");
 hbs.registerPartials(pathdir);
 app.set('view engine',"hbs");
 
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json())
+
 //app.use(bodyParser.json())
 //const  = __dirname;
 // console.log(path);
@@ -28,12 +29,12 @@ app.use(express.json())
 app.use(control)
 
 app.get('/',(req,res)=>{
-    res.render('index');
+    res.render('login');
 })
 
-app.get('/index',(req,res)=>{
+app.get('/login',(req,res)=>{
 //    res.send("hy");
-   res.render('index');
+   res.render('login');
 });
 
 app.get('/register',(req,res)=>{
@@ -60,17 +61,6 @@ app.get('/pin',(req,res)=>{
 app.get('/bal',(req,res)=>{
     res.render('bal.hbs')
 })
-
-
-app.post('/login',(req,res)=>{
-
-    console.log(req.body)
-
-
-
-    res.render("transc.hbs");
-});
-
 
 // app.post('/register',(req,res)=>{
                
